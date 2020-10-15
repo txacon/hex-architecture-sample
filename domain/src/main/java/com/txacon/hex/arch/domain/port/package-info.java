@@ -1,0 +1,1 @@
+package com.txacon.hex.arch.domain.port;
