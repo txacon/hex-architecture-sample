@@ -1,5 +1,6 @@
 package com.txacon.hex.arch.infrastructure.adapter.rest.api;
 
+<<<<<<< HEAD
 import com.txacon.hex.arch.domain.port.spi.UserRepository;
 import com.txacon.hex.arch.infrastructure.adapter.rest.dto.UserDTO;
 import com.txacon.hex.arch.infrastructure.adapter.rest.mapper.UserMapper;
