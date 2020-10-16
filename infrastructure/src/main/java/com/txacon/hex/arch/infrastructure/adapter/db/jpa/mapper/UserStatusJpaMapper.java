@@ -5,7 +5,7 @@ import com.txacon.hex.arch.infrastructure.adapter.db.jpa.model.UserStatusValue;
 import org.mapstruct.Mapper;
 import org.mapstruct.ValueMapping;
 
-@Mapper
+@Mapper(componentModel = "spring")
 public interface UserStatusJpaMapper {
 
     @ValueMapping(source = "ACTIVE", target = "ACTIVE")

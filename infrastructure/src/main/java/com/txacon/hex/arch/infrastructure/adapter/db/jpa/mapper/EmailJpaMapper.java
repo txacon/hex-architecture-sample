@@ -3,7 +3,7 @@ package com.txacon.hex.arch.infrastructure.adapter.db.jpa.mapper;
 import com.txacon.hex.arch.domain.domain.values.Email;
 import org.mapstruct.Mapper;
 
-@Mapper
+@Mapper(componentModel = "spring")
 public interface EmailJpaMapper {
 
     default Email toDomainModel(String email) {

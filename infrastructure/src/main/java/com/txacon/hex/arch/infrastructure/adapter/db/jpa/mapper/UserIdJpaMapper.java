@@ -5,7 +5,7 @@ import org.mapstruct.Mapper;
 
 import java.util.UUID;
 
-@Mapper
+@Mapper(componentModel = "spring")
 public interface UserIdJpaMapper {
 
     default UserId toDomainModel(UUID userId) {

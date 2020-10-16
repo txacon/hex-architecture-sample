@@ -7,10 +7,7 @@ import com.txacon.hex.arch.domain.port.spi.UserRepository;
 import org.springframework.context.annotation.Profile;
 import org.springframework.stereotype.Repository;
 
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
-import java.util.Optional;
+import java.util.*;
 
 
 @Repository
@@ -61,6 +58,6 @@ public class UserInMemoryRepository implements UserRepository {
 
     @Override
     public List<User> getUsers() {
-        return (List<User>) store.values();
+        return new ArrayList<>(store.values());
     }
 }

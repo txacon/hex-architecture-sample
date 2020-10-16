@@ -17,8 +17,7 @@ public class Email implements Serializable {
         if (userMailbox == null || domain == null) {
             this.userMailbox = null;
             this.domain = null;
-        }
-        else {
+        } else {
             this.userMailbox = userMailbox.toLowerCase();
             this.domain = domain.toLowerCase();
         }
@@ -33,10 +32,11 @@ public class Email implements Serializable {
 
     /**
      * Accept raw mail and return Email object
+     *
      * @param email String email representation
      * @return Email object
      */
-    public static Email of(String email){
+    public static Email of(String email) {
         if (email == null) return null;
         String[] emailParts = email.split("@");
         if (emailParts.length != 2) return null;

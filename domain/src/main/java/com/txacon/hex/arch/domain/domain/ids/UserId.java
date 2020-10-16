@@ -6,7 +6,7 @@ import java.util.UUID;
 
 public class UserId extends EntityId implements Serializable {
 
-    public UserId(){
+    public UserId() {
         super();
     }
 

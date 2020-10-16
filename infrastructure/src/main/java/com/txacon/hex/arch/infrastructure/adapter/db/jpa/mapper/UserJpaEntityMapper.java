@@ -4,7 +4,7 @@ import com.txacon.hex.arch.domain.domain.User;
 import com.txacon.hex.arch.infrastructure.adapter.db.jpa.model.UserEntity;
 import org.mapstruct.Mapper;
 
-@Mapper(uses = {EmailJpaMapper.class, UserIdJpaMapper.class, UserStatusJpaMapper.class})
+@Mapper(componentModel = "spring", uses = {EmailJpaMapper.class, UserIdJpaMapper.class, UserStatusJpaMapper.class})
 public interface UserJpaEntityMapper {
 
     UserEntity toEntity(User user);

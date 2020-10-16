@@ -38,7 +38,7 @@ public class UserController {
         return new ResponseEntity<>(HttpStatus.ACCEPTED);
     }
 
-    @GetMapping("")
+    @GetMapping("/")
     public ResponseEntity<UserDTO> findByEmail(@RequestParam String email) throws UserNotFoundException {
         return ResponseEntity.ok(userMapper.toDto(userService.getUserByEmail(Email.of(email))));
     }

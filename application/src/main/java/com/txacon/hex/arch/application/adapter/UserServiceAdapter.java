@@ -11,7 +11,6 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
-import java.util.Objects;
 
 @Service
 @RequiredArgsConstructor
@@ -41,6 +40,7 @@ public class UserServiceAdapter implements UserService {
     public void addUser(User user) throws InvalidUserException {
         if (user == null) throw new InvalidUserException("user", "is null");
         if (user.getEmail() == null) throw new InvalidUserException("email", "is null or invalid");
+        if (repository.findByEmail(user.getEmail()).isPresent()) throw new InvalidUserException("email","Email allready exits");
         if (user.getUserId() == null) user.setUserId(new UserId());
         repository.save(user);
     }
