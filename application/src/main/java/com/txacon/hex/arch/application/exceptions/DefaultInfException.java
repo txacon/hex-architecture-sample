@@ -1,25 +1,16 @@
 package com.txacon.hex.arch.application.exceptions;
 
-import java.text.MessageFormat;
-import java.util.ArrayList;
-import java.util.List;
+import lombok.AllArgsConstructor;
+import lombok.NoArgsConstructor;
 
-public class DefaultInfException extends Exception {
+@NoArgsConstructor
+@AllArgsConstructor
+public abstract class DefaultInfException extends RuntimeException {
 
-    private final String errorMessage;
-    private final List<Object> argumentList;
-
-    public DefaultInfException(String errorMessage) {
-        this.errorMessage = errorMessage;
-        this.argumentList = new ArrayList<>();
-    }
-
-    protected void addArgument(Object argument) {
-        this.argumentList.add(argument);
-    }
+    private ApiError error;
 
     public String getExceptionMessage() {
-        return MessageFormat.format(errorMessage, argumentList.toArray());
+        return error != null ? error.getMessageError() : "";
     }
 
 

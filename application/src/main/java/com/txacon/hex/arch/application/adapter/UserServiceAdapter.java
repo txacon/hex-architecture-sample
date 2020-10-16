@@ -1,6 +1,7 @@
 package com.txacon.hex.arch.application.adapter;
 
 import com.txacon.hex.arch.application.api.UserService;
+import com.txacon.hex.arch.application.exceptions.ApiError;
 import com.txacon.hex.arch.application.exceptions.InvalidUserException;
 import com.txacon.hex.arch.application.exceptions.UserNotFoundException;
 import com.txacon.hex.arch.domain.domain.User;
@@ -21,26 +22,26 @@ public class UserServiceAdapter implements UserService {
 
     @Override
     public User getUserById(UserId userId) throws UserNotFoundException {
-        return repository.findByUserId(userId).orElseThrow(() -> new UserNotFoundException("userId", userId));
+        return repository.findByUserId(userId).orElseThrow(() -> new UserNotFoundException(ApiError.ERROR_USER_NOT_FOUND_BY_ID));
     }
 
     @Override
     public User getUserByEmail(Email email) throws UserNotFoundException {
-        return repository.findByEmail(email).orElseThrow(() -> new UserNotFoundException("email", email));
+        return repository.findByEmail(email).orElseThrow(() -> new UserNotFoundException(ApiError.ERROR_USER_NOT_FOUND_BY_EMAIL));
     }
 
     @Override
     public void removeUser(UserId userId) throws UserNotFoundException {
-        if (userId == null) throw new UserNotFoundException("userId", userId);
+        if (userId == null) throw new UserNotFoundException(ApiError.ERROR_USER_NOT_FOUND_BY_ID);
         repository.deleteByUserId(userId);
 
     }
 
     @Override
     public void addUser(User user) throws InvalidUserException {
-        if (user == null) throw new InvalidUserException("user", "is null");
-        if (user.getEmail() == null) throw new InvalidUserException("email", "is null or invalid");
-        if (repository.findByEmail(user.getEmail()).isPresent()) throw new InvalidUserException("email","Email allready exits");
+        if (user == null) throw new InvalidUserException(ApiError.ERROR_USER_IS_NULL);
+        if (user.getEmail() == null) throw new InvalidUserException(ApiError.ERROR_USER_WITHOUT_EMAIL);
+        if (repository.findByEmail(user.getEmail()).isPresent()) throw new InvalidUserException(ApiError.ERROR_USER_ALLREADY_EXITS);
         if (user.getUserId() == null) user.setUserId(new UserId());
         repository.save(user);
     }
