@@ -4,7 +4,7 @@ import com.txacon.hex.arch.domain.domain.ids.UserId;
 import org.mapstruct.Mapper;
 
 @Mapper
-public interface UserIdMapper {
+public interface UserIdRestMapper {
 
     default UserId mapStrToUserId(String userIdStr){
         return new UserId(userIdStr);
